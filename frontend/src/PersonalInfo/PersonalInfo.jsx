@@ -47,6 +47,20 @@ const PersonalInfo = () => {
                         <option value=''>Select...</option>
                         <option value='male'>Male</option>
                         <option value='female'>Female</option>
+                        <option value='female'>Non-binary</option>
+                        <option value='female'>Transgender</option>
+                        <option value='other'>Other</option>
+                    </select>
+                </label>
+                <label className='form-label'>
+                    Sexuality:
+                    <select name='gender'>
+                        <option value=''>Select...</option>
+                        <option value='female'>Not Comfortable disclosing</option>
+                        <option value='male'>Straight</option>
+                        <option value='female'>Gay</option>
+                        <option value='female'>Lesbian</option>
+                        <option value='female'>Asexual</option>
                         <option value='other'>Other</option>
                     </select>
                 </label>
