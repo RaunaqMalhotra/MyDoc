@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css'; 
 import { FaHospital, FaStethoscope, FaMapMarkedAlt, FaUserAlt, FaRobot, } from 'react-icons/fa'; 
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
     const titleText = "Weelcome to myDoc";
@@ -25,7 +26,9 @@ const Homepage = () => {
         <div className='homepage'>
             <header>
                 <h1 className="app-title">{title}</h1>
-                <button className='get-started-button'>Get Started</button>
+                <Link to="/signup">
+                  <button className='get-started-button'>Get Started </button>
+                </Link>
             </header>
 
             <main>

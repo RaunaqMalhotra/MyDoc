@@ -20,7 +20,7 @@ const Login = () => {
                 </label>
                 <input className='log-in-button' type='submit' value='Log In' />
                 <p className="sign-up-link"> New here? Welcome! </p>
-                <p className="sign-up-link"><Link to='/signUp'> Sign up </Link></p>
+                <p className="log-in-button"><Link to='/signUp'> Sign up </Link></p>
             </form>
             <nav className="navigation"><Link to='/home'><FaHome /></Link></nav>
             <footer className='footer'>© 2023 myDoc. All rights reserved.</footer>

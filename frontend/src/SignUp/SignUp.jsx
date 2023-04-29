@@ -21,11 +21,12 @@ const SignUp = () => {
                     Password:
                     <input type='text' name='password'/>
                 </label>
-                <input className='sign-up-button' type='submit' value='Log In' />
+                <input className='sign-up-button' type='submit' value='Create Account' />
                 <p className="sign-up-link"> Already have an account? Awesome! </p>
-                <p className="sign-up-link"><Link to='/login'> Log In </Link></p>
+                <p className="sign-up-button"><Link to='/login'> Log In </Link></p>
             </form>
             <nav className="navigation"><Link to='/home'><FaHome /></Link></nav>
+
             <footer className='footer'>© 2023 myDoc. All rights reserved.</footer>
         </div>
     )
