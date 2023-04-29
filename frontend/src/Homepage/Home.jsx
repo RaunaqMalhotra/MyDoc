@@ -26,7 +26,7 @@ const Homepage = () => {
         <div className='homepage'>
             <header>
                 <h1 className="app-title">{title}</h1>
-                <Link to="/signup">
+                <Link to="/login">
                   <button className='get-started-button'>Get Started </button>
                 </Link>
             </header>
