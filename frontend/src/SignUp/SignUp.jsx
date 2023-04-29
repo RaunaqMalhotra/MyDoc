@@ -23,7 +23,7 @@ const SignUp = () => {
                 </label>
                 <input className='sign-up-button' type='submit' value='Create Account' />
                 <p className="sign-up-link"> Already have an account? Awesome! </p>
-                <p className="sign-up-button"><Link to='/login'> Log In </Link></p>
+                <Link to='/login'><button className="sign-up-button"> Log in </button></Link>
             </form>
             <nav className="navigation"><Link to='/home'><FaHome /></Link></nav>
 
