@@ -16,7 +16,7 @@ const Login = () => {
                 </label>
                 <label className='form-label'>
                     Password:
-                    <input type='text' name='password'/>
+                    <input type='password' name='password'/>
                 </label>
                 <input className='log-in-button' type='submit' value='Log In' />
                 <p className="sign-up-link"> New here? Welcome! </p>

@@ -19,7 +19,7 @@ const SignUp = () => {
                 </label>
                 <label className='form-label'>
                     Password:
-                    <input type='text' name='password'/>
+                    <input type='password' name='password'/>
                 </label>
                 <input className='sign-up-button' type='submit' value='Create Account' />
                 <p className="sign-up-link"> Already have an account? Awesome! </p>
