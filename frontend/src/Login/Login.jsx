@@ -7,7 +7,7 @@ import { FaStethoscope } from 'react-icons/fa';
 const Login = () => {
     return (
         <div className='log-in-page'>
-            <h2 className='log-in-title'> Log In for a better experience </h2>
+            <h2 className='log-in-title'> Log In </h2>
             <FaStethoscope className='stethoscope-icon' />
             <form className='log-in-form'> 
                 <label className='form-label'>
