@@ -1,0 +1,135 @@
+.personal-info-page {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: color-transition 10s infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.top-text {
+    font-size: 6vw;
+    color: goldenrod;
+}
+
+.personal-info-title {
+    font-size: 3vw; 
+}
+
+
+.form-label input,
+.form-label select,
+.form-label textarea {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.5vw;
+    border-radius: 15px;  
+}
+
+.form-label input[type="submit"] {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    font-size: 1.5vw;
+    border-radius: 15px; 
+}
+
+.location-button {
+    background-color: goldenrod;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.location-text {
+    color: goldenrod;
+    margin-top: 10px;
+}
+
+.submit-button {
+    background-color: goldenrod;
+    color: #000;
+    border: none;
+    padding: 10px 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.submit-button:hover {
+    background-color: green;
+    color: #fff;
+}
+
+.personal-info-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-label {
+    color: white;
+    font-size: 2vw;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-label input[type="submit"]:active {
+    background-color: green;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+@keyframes color-transition {
+    0% { color: white; }
+    50% { color: goldenrod; }
+    100% { color: blanchedalmond; }
+}
+
+@media screen and (max-width: 768px) {
+    .personal-info-title {
+        font-size: 5vw;
+    }
+
+    .form-label {
+        font-size: 4vw;
+    }
+
+    .location-button, .submit-button {
+        font-size: 4vw;
+    }
+
+    .top-text {
+        font-size: 4vw;
+    }
+
+    .footer {
+        font-size: 4vw;
+    }
+}
