@@ -1,7 +1,7 @@
 import React from "react";
 import './Login.css';
 import { Link } from 'react-router-dom';
-import Navigation from '../Naviagtion/Navigation';
+import { FaHome } from 'react-icons/fa';
 import { FaStethoscope } from 'react-icons/fa'; 
 
 const Login = () => {
@@ -11,18 +11,18 @@ const Login = () => {
             <FaStethoscope className='stethoscope-icon' />
             <form className='log-in-form'> 
                 <label className='form-label'>
-                    Email: 
-                    <input type='text' name='email'/>
+                    Username: 
+                    <input type='text' name='username'/>
                 </label>
                 <label className='form-label'>
                     Password:
-                    <input type='text' name='passowrd'/>
+                    <input type='text' name='password'/>
                 </label>
                 <input className='log-in-button' type='submit' value='Log In' />
                 <p className="sign-up-link"> New here? Welcome! </p>
                 <p className="sign-up-link"><Link to='/signUp'> Sign up </Link></p>
             </form>
-            <Navigation />
+            <nav className="navigation"><Link to='/home'><FaHome /></Link></nav>
             <footer className='footer'>© 2023 myDoc. All rights reserved.</footer>
         </div>
     )
