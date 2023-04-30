@@ -1,118 +1,74 @@
-.results-page {
+.results-container {
     background-color: black;
     color: white;
-    padding: 20px;
-    box-sizing: border-box;
-    animation: color-transition 10s infinite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     min-height: 100vh;
-}
-
-.top-text {
-    font-size: 6vw;
+  }
+  
+  .navbar {
+    width: 100%;
+    background-color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  .home-icon,
+  .diagnosis-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .home-icon:hover,
+  .diagnosis-icon:hover {
     color: goldenrod;
-}
-
-.results-form {
+  }
+  
+  .results-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 600px;
-}
-
-.form-label {
-    color: white;
-    font-size: 1.5vw;
-    margin-bottom: 20px;
-}
-
-.form-label input,
-.form-label select,
-.form-label textarea {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 1.5vw;
-    border-radius: 15px;  
-}
-
-.form-label input[type="submit"] {
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  
+  .results-card h2,
+  .results-card h3 {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .home-button {
     background-color: white;
     color: black;
     cursor: pointer;
     border: none;
-    padding: 10px;
-    font-size: 1.5vw;
-    border-radius: 15px; 
-}
-
-.form-label input[type="submit"]:active {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button:hover {
     background-color: green;
-}
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
+  }
+  
+  .footer {
+    background-color: #333333;
     color: white;
     text-align: center;
-    padding: 10px 0;
-}
-
-.navigation {
-    margin-top: 20px;
-}
-
-.options-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.options-container label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.form-label input[type="file"] {
-    margin-top: 10px;
-}
-
-@keyframes color-transition {
-    0% { color: white; }
-    50% { color: goldenrod; }
-    100% { color: blanchedalmond; }
-}
-
-@media screen and (max-width: 768px) {
-    .top-text {
-        font-size: 8vw;
-    }
-
-    .form-label {
-        font-size: 5vw;
-    }
-
-    .form-label input,
-    .form-label select,
-    .form-label textarea {
-        font-size: 4vw;
-    }
-
-    .form-label input[type="submit"] {
-        font-size: 4vw;
-    }
-
-    .footer {
-        font-size: 4vw;
-    }
-}
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+  }
+  
