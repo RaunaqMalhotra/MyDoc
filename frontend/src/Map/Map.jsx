@@ -28,7 +28,7 @@ const Map = () => {
                 location: currentLocation,
                 radius: '5000',
                 type: ['hospital'],
-                keyword: "heart"
+                keyword: "infection"
             };
             
             const service = new window.google.maps.places.PlacesService(mapRef.current);

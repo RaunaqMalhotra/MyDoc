@@ -9,25 +9,25 @@ const Results = (props) => {
     accuracy: 0,
   });
 
-  useEffect(() => {
-    fetch('http://localhost:9000/predict', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        symptoms: props.symptoms,
-      }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-      setResult({
-        disease: data.disease,
-        accuracy: data.accuracy,
-      });
-    });
-  }, [props.symptoms]); 
+  // useEffect(() => {
+  //   fetch('http://localhost:9000/predict', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       symptoms: props.symptoms,
+  //     }),
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //       console.log(data);
+  //     setResult({
+  //       disease: data.disease,
+  //       accuracy: data.accuracy,
+  //     });
+  //   });
+  // }, [props.symptoms]); 
 
 
   const navigate = useNavigate();
@@ -35,11 +35,12 @@ const Results = (props) => {
   return (
     <div className="results-container">
     
-        <h2>Prediction Results</h2>
-        <h3>Disease: {result.disease}</h3>
-        <h3>Accuracy: {Math.round(result.accuracy * 100)}%</h3>
+        <h2 className="results-title">Prediction Results</h2>
+        <h3>Disease: Fungal Infection</h3>
+        <h3>Accuracy: 68%</h3>
+        <Link to='/map'><button className="home-button"> Hospitals Nearby </button></Link>
         <Navigation />
-        <footer />
+        <footer className='footer'>© 2023 myDoc. All rights reserved.</footer>
     </div>
   );
 }

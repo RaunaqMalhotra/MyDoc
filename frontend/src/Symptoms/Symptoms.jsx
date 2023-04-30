@@ -92,7 +92,7 @@ function Symptoms() {
           <select name='duration' value={formState.duration} onChange={handleChange}>
             <option value=''>Select...</option>
             <option value='1_day'>1 day</option>
-            <option value='1_day'>2-6 days</option>
+            <option value='2-6_day'>2-6 days</option>
             <option value='1_week'>1 week</option>
             <option value='1_month'>1 month</option>
             <option value='1_month'>1 month +</option>
