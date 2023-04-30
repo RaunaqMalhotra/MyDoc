@@ -41,16 +41,110 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     Parse.User.logIn(username, password).then(
-      (user) => {
-        console.log('User logged in successful with name: ' + user.get("username"));
-        res.status(200).send('User logged in successful with name: ' + user.get("username"));
-      },
-      (error) => {
-        console.log("Error: " + error.code + " " + error.message);
-        res.status(400).send("Error: " + error.code + " " + error.message);
-      }
+        (user) => {
+            console.log('User logged in successful with name: ' + user.get("username"));
+            res.status(200).json({ message: 'User logged in successful with name: ' + user.get("username") }); 
+        },
+        (error) => {
+            console.log("Error: " + error.code + " " + error.message);
+            res.status(400).json({ error: "Error: " + error.code + " " + error.message }); 
+        }
     );
 });
+
+app.post('/savePersonalInfo', async (req, res) => {
+    const { username, fullName, age, height, weight, gender, sexuality, race, currentMedications } = req.body;
+
+    const User = Parse.Object.extend("Profile");
+    const query = new Parse.Query(User);
+    query.equalTo("username", username);
+    
+    try {
+        const user = await query.first();
+        
+        if(user) {
+            user.set("fullName", fullName);
+            user.set("age", age);
+            user.set("height", height);
+            user.set("weight", weight);
+            user.set("gender", gender);
+            user.set("sexuality", sexuality);
+            user.set("race", race);
+            user.set("currentMedications", currentMedications);
+
+            await user.save();
+
+            res.status(200).json({ message: 'User info updated successfully with username: ' + user.get("username") }); 
+        } else {
+            const newUser = new User();
+
+            newUser.set("username", username);
+            newUser.set("fullName", fullName);
+            newUser.set("age", age);
+            newUser.set("height", height);
+            newUser.set("weight", weight);
+            newUser.set("gender", gender);
+            newUser.set("sexuality", sexuality);
+            newUser.set("race", race);
+            newUser.set("currentMedications", currentMedications);
+
+            await newUser.save();
+
+            res.status(200).json({ message: 'User info saved successfully with username: ' + newUser.get("username") }); 
+        }
+    } catch (error) {
+        console.log("Error: " + error.code + " " + error.message);
+        res.status(400).json({ error: "Error: " + error.code + " " + error.message }); 
+    }
+});
+
+app.post('/saveSymptoms', async (req, res) => {
+    const { username, symptoms, duration, severity, imageUpload } = req.body;
+
+    const User = Parse.Object.extend("Symptoms");
+    const query = new Parse.Query(User);
+    query.equalTo("username", username);
+    
+    try {
+        const user = await query.first();
+        
+        if(user) {
+            user.set("symptoms", symptoms);
+            user.set("duration", duration);
+            user.set("severity", severity);
+
+            if (imageUpload) {
+                const file = new Parse.File(imageUpload.name, { base64: imageUpload.base64 });
+                user.set("imageUpload", file);
+            }
+
+            await user.save();
+
+            res.status(200).json({ message: 'User symptoms updated successfully with username: ' + user.get("username") }); 
+        } else {
+            const newUser = new User();
+
+            newUser.set("username", username);
+            newUser.set("symptoms", symptoms);
+            newUser.set("duration", duration);
+            newUser.set("severity", severity);
+
+            if (imageUpload) {
+                const file = new Parse.File(imageUpload.name, { base64: imageUpload.base64 });
+                newUser.set("imageUpload", file);
+            }
+
+            await newUser.save();
+
+            res.status(200).json({ message: 'User symptoms saved successfully with username: ' + newUser.get("username") }); 
+        }
+    } catch (error) {
+        console.log("Error: " + error.code + " " + error.message);
+        res.status(400).json({ error: "Error: " + error.code + " " + error.message }); 
+    }
+});
+
+
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
 
