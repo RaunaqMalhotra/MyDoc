@@ -7,6 +7,7 @@ import Login from './Login/Login';
 import Symptoms from './Symptoms/Symptoms';
 import SignUp from './SignUp/SignUp';
 import Map from './Map/Map';
+import Results from './Results/Results';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/symptoms" element={<Symptoms />}></Route>
         <Route path="/map" element={<Map />}></Route>
+        <Route path="/results" element={<Results />}></Route>
       </Routes>
     </div>
   );

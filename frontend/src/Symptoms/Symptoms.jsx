@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Symptoms.css';
 import Navigation from '../Naviagtion/Navigation';
+import axios from 'axios';
 
 function Symptoms() {
   const [formState, setFormState] = useState({
@@ -31,10 +32,11 @@ function Symptoms() {
 
     setFormState(prevState => ({ ...prevState, analyzing: true }));
 
+    let imageUpload = null;
     if (formState.file) {
       try {
         const base64 = await toBase64(formState.file);
-        formState.imageUpload = {
+        imageUpload = {
           base64,
           name: formState.fileName
         };
@@ -43,19 +45,32 @@ function Symptoms() {
       }
     }
 
-    // SIMULATE API CALL HERE
-    setTimeout(() => {
-      console.log(formState);
-      setFormState({
-        symptoms: '',
-        duration: '',
-        severity: '',
-        imageUpload: 'no',
-        file: null,
-        fileName: '',
-        analyzing: false
+    // make API call here
+    const payload = {
+      username: username,
+      symptoms: formState.symptoms,
+      duration: formState.duration,
+      severity: formState.severity,
+      imageUpload: imageUpload
+    };
+
+    axios.post('http://localhost:9000/saveSymptoms', payload)
+      .then(response => {
+        console.log(response);
+        setFormState({
+          symptoms: '',
+          duration: '',
+          severity: '',
+          imageUpload: 'no',
+          file: null,
+          fileName: '',
+          analyzing: false
+        });
+      })
+      .catch(error => {
+        console.error('Error during API call', error);
+        setFormState(prevState => ({ ...prevState, analyzing: false }));
       });
-    }, 2000);
   }
 
   const toBase64 = file => new Promise((resolve, reject) => {
@@ -78,6 +93,7 @@ function Symptoms() {
           <select name='duration' value={formState.duration} onChange={handleChange}>
             <option value=''>Select...</option>
             <option value='1_day'>1 day</option>
+            <option value='1_day'>2-6 days</option>
             <option value='1_week'>1 week</option>
             <option value='1_month'>1 month</option>
             <option value='1_month'>1 month +</option>
