@@ -101,8 +101,8 @@ app.post('/savePersonalInfo', async (req, res) => {
 app.post('/saveSymptoms', async (req, res) => {
     const { username, symptoms, duration, severity, imageUpload } = req.body;
 
-    const User = Parse.Object.extend("Symptoms");
-    const query = new Parse.Query(User);
+    const sym = Parse.Object.extend("Symptoms");
+    const query = new Parse.Query(sym);
     query.equalTo("username", username);
     
     try {
@@ -122,7 +122,7 @@ app.post('/saveSymptoms', async (req, res) => {
 
             res.status(200).json({ message: 'User symptoms updated successfully with username: ' + user.get("username") }); 
         } else {
-            const newUser = new User();
+            const newUser = new sym();
 
             newUser.set("username", username);
             newUser.set("symptoms", symptoms);
@@ -144,6 +144,27 @@ app.post('/saveSymptoms', async (req, res) => {
     }
 });
 
+const { spawn } = require('child_process');
+
+app.post('/predict', (req, res) => {
+    const { symptoms } = req.body;
+
+    const python = spawn('python', ['./ml.py', JSON.stringify(symptoms)]);
+    let dataString = '';
+
+    python.stdout.on('data', function (data) {
+        dataString += data.toString();
+    });
+
+    python.on('close', function (code) {
+        if (code !== 0) {
+            return res.status(500).json({ error: "Failed to run python script" });
+        }
+
+        const result = JSON.parse(dataString);
+        return res.status(200).json(result);
+    });
+});
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
