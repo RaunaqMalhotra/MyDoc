@@ -146,20 +146,29 @@ app.post('/saveSymptoms', async (req, res) => {
 
 const { spawn } = require('child_process');
 
+const path = require('path');
+const modelPath = path.join(__dirname, 'ML MODELS', 'model1.py');
+
 app.post('/predict', (req, res) => {
     const { symptoms } = req.body;
 
     const symptomsArray = Array.isArray(symptoms) ? symptoms : [symptoms];
-    const python = spawn('python', ['./model1.py', JSON.stringify(symptomsArray)]);
+    const python = spawn('python', [modelPath, JSON.stringify(symptomsArray)]);
 
     let dataString = '';
+    let errorString = '';
 
     python.stdout.on('data', function (data) {
         dataString += data.toString();
     });
 
+    python.stderr.on('data', (data) => {
+        errorString += data.toString();
+    });
+
     python.on('close', function (code) {
         if (code !== 0) {
+            console.log(`Python script error: ${errorString}`);
             return res.status(500).json({ error: "Failed to run python script" });
         }
 
