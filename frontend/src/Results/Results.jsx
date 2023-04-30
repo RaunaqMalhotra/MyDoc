@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import './Results.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa';
-import { FaStethoscope } from 'react-icons/fa'; 
+import { Link, useNavigate } from 'react-router-dom'; 
+import Navigation from "../Naviagtion/Navigation";
 
 const Results = (props) => {
   const [result, setResult] = useState({
@@ -35,20 +34,12 @@ const Results = (props) => {
 
   return (
     <div className="results-container">
-      <div className="navbar">
-        <button className="home-icon" onClick={() => navigate('/')}>
-          <FaHome size={30}/>
-        </button>
-        <button className="diagnosis-icon">
-          <FaStethoscope size={30}/>
-        </button>
-      </div>
-      <div className="results-card">
+    
         <h2>Prediction Results</h2>
         <h3>Disease: {result.disease}</h3>
         <h3>Accuracy: {Math.round(result.accuracy * 100)}%</h3>
-        <Link to="/"><button className="home-button">Go Home</button></Link>
-      </div>
+        <Navigation />
+        <footer />
     </div>
   );
 }
