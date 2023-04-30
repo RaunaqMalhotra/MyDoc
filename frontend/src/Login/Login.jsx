@@ -18,8 +18,9 @@ const Login = () => {
                 body: JSON.stringify({ username, password }),
             });
             if (response.ok) {
-                const data = await response.json();
+                const data = await response.text(); 
                 console.log(data);
+                sessionStorage.setItem('username', username); 
                 navigate('/info');
             } else {
                 console.log('Login failed.');
@@ -28,6 +29,7 @@ const Login = () => {
             console.error('Error:', error);
         }
     };
+    
 
     return (
         <div className='log-in-page'>
