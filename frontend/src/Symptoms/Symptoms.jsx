@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Symptoms.css';
 import Navigation from '../Naviagtion/Navigation';
+import { Link, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 function Symptoms() {
@@ -22,7 +24,7 @@ function Symptoms() {
       setFormState(prevState => ({ ...prevState, [name]: value }));
     }
   }
-
+  const navigate = useNavigate(); 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (formState.symptoms.trim() === '') {
@@ -44,7 +46,7 @@ function Symptoms() {
         console.error('File reading was not successful', e);
       }
     }
-
+   
     // make API call here
     const payload = {
       username: username,
@@ -66,11 +68,8 @@ function Symptoms() {
           fileName: '',
           analyzing: false
         });
+        navigate('/results'); 
       })
-      .catch(error => {
-        console.error('Error during API call', error);
-        setFormState(prevState => ({ ...prevState, analyzing: false }));
-      });
   }
 
   const toBase64 = file => new Promise((resolve, reject) => {
