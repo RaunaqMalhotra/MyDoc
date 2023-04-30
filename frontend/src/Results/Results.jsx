@@ -22,12 +22,14 @@ const Results = (props) => {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
       setResult({
         disease: data.disease,
         accuracy: data.accuracy,
       });
     });
-  }, []);
+  }, [props.symptoms]); 
+
 
   const navigate = useNavigate();
 
