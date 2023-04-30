@@ -19,6 +19,7 @@ const SignUp = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data);
+                navigate('/login');
             } else {
                 console.log('Registration failed.');
             }
