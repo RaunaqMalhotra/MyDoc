@@ -149,7 +149,9 @@ const { spawn } = require('child_process');
 app.post('/predict', (req, res) => {
     const { symptoms } = req.body;
 
-    const python = spawn('python', ['./ml.py', JSON.stringify(symptoms)]);
+    const symptomsArray = Array.isArray(symptoms) ? symptoms : [symptoms];
+    const python = spawn('python', ['./model1.py', JSON.stringify(symptomsArray)]);
+
     let dataString = '';
 
     python.stdout.on('data', function (data) {
